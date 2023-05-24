@@ -4,7 +4,7 @@ import { Section } from './Section/Section';
 import { FeedbackOptions } from './FeedbackOptions/FeedbackOptions';
 import { Notification } from './Notification/Notification';
 import { Ul } from './Statistics/Statistics.styled';
-import PropTypes from 'prop-types';
+import PropTypes, { array } from 'prop-types'
 
 export const App = () => {
     const [good, setGood] = useState(0);
@@ -49,7 +49,7 @@ export const App = () => {
         >
             <Section title="Please Leave feedback" />
             <Ul>
-                <FeedbackOptions onLeaveFeedback={handleCLick} />
+                <FeedbackOptions options={['good', 'neutral', 'bad']} onLeaveFeedback={handleCLick} />
             </Ul>
             <Section title="Statistics" />
             {countTotalFeedback() ? (
@@ -76,4 +76,5 @@ App.propTypes = {
     total: PropTypes.func,
     positivePercentage: PropTypes.func,
     message: PropTypes.string,
+    options: array,
 };
